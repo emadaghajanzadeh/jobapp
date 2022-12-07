@@ -1,0 +1,30 @@
+{% comment %} <ul>
+{% for item in information %}
+        <li> 
+            <a href = {{item.1}}>
+                <h1> {{item.0}} </h1>
+            </a>
+        </li>
+{%endfor%}
+</ul>
+
+<!--Another solution without bothering ourself with passing urls here-->
+<ul>
+    {% for item in information %}
+            <li> 
+                <a href = "{% url 'jobs_detail' forloop.counter0 %}">
+                    <h1> {{item.0}} </h1>
+                </a>
+            </li>
+    {%endfor%}
+</ul> {% endcomment %}
+
+<ul>
+    {% for job in jobs%}
+    <li>
+        <a href = "{% url 'jobs_detail' job.id %}">
+            <h1> {{job}} </h1>
+        </a>
+    </li>            
+    {%endfor%}
+</ul>    
