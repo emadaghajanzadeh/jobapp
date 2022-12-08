@@ -2,6 +2,13 @@ from django.db import models
 from django.utils.text import slugify
 
 # Create your models here.
+class Location(models.Model):
+    street = models.CharField(max_length=200)
+    city = models.CharField(max_length=200)
+    state = models.CharField(max_length=200)
+    country = models.CharField(max_length=200)
+    zip = models.CharField(max_length=200)
+
 class JobPost(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
@@ -11,12 +18,11 @@ class JobPost(models.Model):
     # Slug is being used to provide us with user-friendly URLs
     # Unique helps us with indexing
     slug = models.SlugField(null=True, max_length=40, unique=True)
+    location = models.OneToOneField(Location, on_delete = models.CASCADE, null=True)
     
     # String representation of objects
     def __str__(self):
-        return self.title
-
-    # When the object wants to be saved this function is executed.
+        return self.title    # When the object wants to be saved this function is executed.
     def save(self, *args, **kwargs):
         # We do this because we do not want slugs to be updated whenever we update the objects (They must only get value once object is created)
         # if ID does not exist:
@@ -45,6 +51,9 @@ class JobPost(models.Model):
 # How much max is greater than mean: (Complex aggregates need alias, name in other words)
 # JobPost.objects.aggregate(calculated_diff = Max("salary") - Avg("salary"))
     
+
+
+
 
     
 

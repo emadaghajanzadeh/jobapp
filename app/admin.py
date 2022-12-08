@@ -5,8 +5,17 @@ class jobAdmin(admin.ModelAdmin):
     list_display = ("title", "date", "salary")
     list_filter = ('date', 'salary')
     search_fields = ("title", "description")
-    fields = ("title", ("description", "salary"))
+    # fields = ("title", ("description", "salary"))
 
-
+    # To specify sections:
+    fieldsets = (
+        ('Basic Information', {
+         'fields': ('title', 'description')
+         }),
+        ('More Information', {
+         'classes': ('collapse', 'wide'),
+         'fields': (('expiry', 'salary'), 'slug')
+         }), 
+    )
 # Register your models here.
 admin.site.register(JobPost, jobAdmin)
