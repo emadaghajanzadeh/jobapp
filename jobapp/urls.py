@@ -17,11 +17,6 @@ from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
 
-
-
-
-
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     # to tell Django to also chekc the urls.py in the app

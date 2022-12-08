@@ -6,6 +6,7 @@ class JobPost(models.Model):
     title = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     date = models.DateTimeField(auto_now_add=True)
+    expiry = models.DateField(null= True)
     salary = models.IntegerField()
     # Slug is being used to provide us with user-friendly URLs
     # Unique helps us with indexing
