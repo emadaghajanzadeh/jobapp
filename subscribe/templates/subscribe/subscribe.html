@@ -9,9 +9,27 @@
 <body>
       <form method="post">
         {% csrf_token %}
-          {{form}}
-          <input type = "submit" value="Submit">
 
+        {% comment %} 1- Using Djano completely {% endcomment %}
+          {% comment %} {{form.as_ul}}
+          <input type = "submit" value="Submit"> {% endcomment %}
+
+        {% comment %} 2- Getting info using for loops {% endcomment %}
+        {% for field in form %}
+          <div class = "subscribe_field">
+            {{field.errors}}
+            {% comment %} {{field.label_tag}} {% endcomment %}
+            <label for = "{{field.id_for_label}}">
+              {{field.label}}
+            </label>
+            {{field}}
+          </div>
+        {% endfor %}
+
+
+
+
+        {% comment %} 3- Manually getting Info {% endcomment %}
         {% comment %} {% csrf_token %}
         {% if email_error %}
           <p>{{email_error}} </p>
