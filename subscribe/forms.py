@@ -1,5 +1,6 @@
 from django import forms
 from subscribe.models import Subscribe
+from django.utils.translation import gettext_lazy as _
 
 # We have a form which is a ModelForm (we are converting an already existing model to a form)
 # We have a class Meta within which we specify which model this form links to
@@ -10,7 +11,24 @@ class SubscribeForm(forms.ModelForm):
         # fields = ['first_name', 'last_name', 'email']
         # Or alternatively:
         fields = '__all__'
+        # exclude = ("first_name",)
         # Also, here you can see the list of all conversion from model to form: https://docs.djangoproject.com/en/4.1/topics/forms/modelforms/#field-types
+        # Defning customized labels for fileds to be shown to users:
+        labels = {
+            'first_name': _('Enter first name'),
+            'last_name': _('Enter last name'),
+            'email': _('Enter email')
+        }
+        # Defining help texts:
+        help_texts = {
+            'first_name': _("Enter characters only")
+        }
+        # As well, customizing errors:
+        error_messages = {
+            'first_name':{
+                'required': _("You cannot move forward without first name")
+            },
+        }
 
 
 

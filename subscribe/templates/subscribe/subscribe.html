@@ -11,20 +11,19 @@
         {% csrf_token %}
 
         {% comment %} 1- Using Djano completely {% endcomment %}
-          {% comment %} {{form.as_ul}}
-          <input type = "submit" value="Submit"> {% endcomment %}
+          {{form.as_ul}}
+          <input type = "submit" value="Submit">
 
         {% comment %} 2- Getting info using for loops {% endcomment %}
-        {% for field in form %}
+        {% comment %} {% for field in form %}
           <div class = "subscribe_field">
             {{field.errors}}
-            {% comment %} {{field.label_tag}} {% endcomment %}
             <label for = "{{field.id_for_label}}">
               {{field.label}}
             </label>
             {{field}}
           </div>
-        {% endfor %}
+        {% endfor %} {% endcomment %}
 
 
 
