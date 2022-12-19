@@ -1,12 +1,17 @@
+{% comment %} This line helps you to use static tags and enables you to use it for embedied links of static {% endcomment %}
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} Django by default scans within the static folder of the project {% endcomment %}
+    <link rel='stylesheet' type='text/css' href="{% static 'subscribe/main.css' %}">
     <title>Subscribe Form</title>
 </head>
 <body>
+    <h1> <img src="{% static 'subscribe/image.jpg' %}" alt="subscribe"> Subscribe Form </h1>
       <form method="post">
         {% csrf_token %}
 
@@ -45,6 +50,11 @@
         <input type="submit" value="Submit"> {% endcomment %}
     
       </form>
+      <button onclick = "popup()"> Click Me! </button>
+
+      <script src= "{% static 'subscribe/main.js' %}">
+
+      </script>
     
 </body>
 </html>
