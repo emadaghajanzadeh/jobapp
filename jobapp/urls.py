@@ -16,12 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse
-
+ 
 urlpatterns = [
     path('admin/', admin.site.urls),
     # to tell Django to also chekc the urls.py in the app
     path('', include('app.urls')),
-    path('', include('subscribe.urls'))
+    path('', include('subscribe.urls')),
+    path('uploads/', include('uploadapp.urls'))
 
 
 ]
