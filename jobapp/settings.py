@@ -124,6 +124,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# MEDIA ROOT defines the root folder where user uploaded media is stored
+# MEDIA URL defines the url on which the media can be accessed.
+MEDIA_ROOT = BASE_DIR / 'uploads/'
+MEDIA_URL = '/media/'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
