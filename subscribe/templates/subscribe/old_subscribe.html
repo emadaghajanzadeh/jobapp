@@ -1,0 +1,60 @@
+{% comment %} This line helps you to use static tags and enables you to use it for embedied links of static {% endcomment %}
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} Django by default scans within the static folder of the project {% endcomment %}
+    <link rel='stylesheet' type='text/css' href="{% static 'subscribe/main.css' %}">
+    <title>Subscribe Form</title>
+</head>
+<body>
+    <h1> <img src="{% static 'subscribe/image.jpg' %}" alt="subscribe"> Subscribe Form </h1>
+      <form method="post">
+        {% csrf_token %}
+
+        {% comment %} 1- Using Djano completely {% endcomment %}
+          {{form.as_ul}}
+          <input type = "submit" value="Submit">
+
+        {% comment %} 2- Getting info using for loops {% endcomment %}
+        {% comment %} {% for field in form %}
+          <div class = "subscribe_field">
+            {{field.errors}}
+            <label for = "{{field.id_for_label}}">
+              {{field.label}}
+            </label>
+            {{field}}
+          </div>
+        {% endfor %} {% endcomment %}
+
+
+
+
+        {% comment %} 3- Manually getting Info {% endcomment %}
+        {% comment %} {% csrf_token %}
+        {% if email_error %}
+          <p>{{email_error}} </p>
+        {% endif %}
+        <label for="f_name">First Name</label>
+        <input type="text" id="f_name" name="firstname" placeholder="Your First Name" required>
+        <br>
+        <label for="l_name">Last Name</label>
+        <input type="text" id="l_name" name="lastname" placeholder="Your Last Name" required>
+        <br>
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+        <br>
+        <input type="submit" value="Submit"> {% endcomment %}
+    
+      </form>
+      <button onclick = "popup()"> Click Me! </button>
+
+      <script src= "{% static 'subscribe/main.js' %}">
+
+      </script>
+    
+</body>
+</html>
