@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% comment %} First Method {% endcomment %}
+{% comment %} <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,4 +12,14 @@
 <body>
     <p>Thank you for your submission</p>
 </body>
-</html>
+</html> {% endcomment %}
+
+
+{% comment %} Second Method {% endcomment %}
+
+{% block title %}FlixCareers | Thank you{% endblock title %}
+{% block content %}
+    <body>
+        <p>Thank you for your submission</p>
+    </body>
+{% endblock content %}

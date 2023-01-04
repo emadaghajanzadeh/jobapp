@@ -20,9 +20,9 @@ class SubscribeForm(forms.ModelForm):
             'email': _('Enter email')
         }
         # Defining help texts:
-        help_texts = {
-            'first_name': _("Enter characters only")
-        }
+        # help_texts = {
+        #     'first_name': _("Enter characters only")
+        # }
         # As well, customizing errors:
         error_messages = {
             'first_name':{
